@@ -19,8 +19,24 @@ class Piece(object):
         """Takes a list of coordinates, for ex, [A, 1, B, 2](but instead the letters are the corresponding numbers), and
                  checks, can this course be done or not"""
 
-    def possible_ways(self, move_from):
+     def possible_ways(self, move_from):
         """Takes a list move_from and return all available ways for this figure from this position"""
+        self.available_ways = {}
+        c = move_from
+        c[0] = ord(c[0].upper()) - 65
+        c[1] = int(c[1]) - 1
+        counter = 0
+        for y in range(8):
+            for x in range(8):
+                if counter == 0:
+                    c.append(x)
+                    c.append(y)
+                    counter = 1
+                c.insert(2, x)
+                c.insert(3, y)
+                if self.is_possible(self, c):
+                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
+        return self.available_ways.keys()
 
 
 class Free_space(Piece):
@@ -48,24 +64,6 @@ class Pawn(Piece):
         if not is_it_ok:
             return False
 
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
-
 
 class Knight(Piece):
     __name__ = 'Knight'
@@ -83,24 +81,6 @@ class Knight(Piece):
         if abs(deltaX) == 1 and abs(deltaY) == 2:
             return True
         return False
-
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
 
 
 class Rook(Piece):
@@ -120,24 +100,6 @@ class Rook(Piece):
             return True
         return False
 
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
-
 
 class Bishop(Piece):
     __name__ = 'Bishop'
@@ -155,24 +117,6 @@ class Bishop(Piece):
                 return True
         return False
 
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
-
 
 class King(Piece):
     __name__ = 'King'
@@ -189,24 +133,6 @@ class King(Piece):
             if abs(deltaX) + abs(deltaY) != 0:
                 return True
         return False
-
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
 
 
 class Queen(Piece):
@@ -228,21 +154,3 @@ class Queen(Piece):
         if abs(deltaY) == 0 and abs(deltaX) != 0:
             return True
         return False
-
-    def possible_ways(self, move_from):
-        self.available_ways = {}
-        c = move_from
-        c[0] = ord(c[0].upper()) - 65
-        c[1] = int(c[1]) - 1
-        counter = 0
-        for y in range(8):
-            for x in range(8):
-                if counter == 0:
-                    c.append(x)
-                    c.append(y)
-                    counter = 1
-                c.insert(2, x)
-                c.insert(3, y)
-                if self.is_possible(self, c):
-                    self.available_ways[chr(x + 65) + chr((y + 1))] = 1
-        return self.available_ways.keys()
