@@ -37,7 +37,8 @@ class Chess_board(object):
             self.shah = False
 
     def prepare_for_castling(self, move_from, move_to):
-        """Takes a lists of move_from and move_to and prepares for castling"""
+        """Takes a lists of move_from and move_to and hecks if we can do it, and 
+        redraws the trigger responsible for the readiness to commit itg"""
         c = move_from + move_to
         c[0] = ord(c[0].upper()) - 65
         c[1] = int(c[1]) - 1
