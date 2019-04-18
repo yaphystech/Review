@@ -1,12 +1,5 @@
 from Colors import Colors
-from Figures import Piece
-from Figures import Rook
-from Figures import Queen
-from Figures import Bishop
-from Figures import King
-from Figures import Knight
-from Figures import Pawn
-from Figures import Free_space
+from Figures import *
 from Cell import cell
 
 
