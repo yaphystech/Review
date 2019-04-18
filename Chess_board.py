@@ -4,6 +4,30 @@ from Cell import cell
 
 
 class Chess_board(object):
+    
+    def __init__(self):
+        """Creates the board"""
+        self.current_move = Colors.Free
+        self.ready_for_castling = False
+        self.shah = False
+        self.board = [[cell((i, j)) for i in range(8)] for j in range(8)]
+        for i in (1, 6):
+            for j in range(8):
+                self.board[i][j].piece_type = Pawn(Colors.White if i == 1 else Colors.Black)
+
+        for i in (0, 7):
+            self.board[i][0].piece_type = Rook(Colors.White if i == 0 else Colors.Black)
+            self.board[i][7].piece_type = Rook(Colors.White if i == 0 else Colors.Black)
+            self.board[i][1].piece_type = Knight(Colors.White if i == 0 else Colors.Black)
+            self.board[i][6].piece_type = Knight(Colors.White if i == 0 else Colors.Black)
+            self.board[i][2].piece_type = Bishop(Colors.White if i == 0 else Colors.Black)
+            self.board[i][5].piece_type = Bishop(Colors.White if i == 0 else Colors.Black)
+            self.board[i][4].piece_type = King(Colors.White if i == 0 else Colors.Black)
+            self.board[i][3].piece_type = Queen(Colors.White if i == 0 else Colors.Black)
+        for i in range(2, 6):
+            for j in range(8):
+                self.board[i][j].piece_type = Free_space()
+                
     def change_move(self, color=Colors.Free):
         """Changes the move from white to black and conversely. Takes color(int)"""
         if color != Colors.Free:
@@ -73,29 +97,6 @@ class Chess_board(object):
                         if is_possible:
                             return True
         return False
-
-    def __init__(self):
-        """Creates the board"""
-        self.current_move = Colors.Free
-        self.ready_for_castling = False
-        self.shah = False
-        self.board = [[cell((i, j)) for i in range(8)] for j in range(8)]
-        for i in (1, 6):
-            for j in range(8):
-                self.board[i][j].piece_type = Pawn(Colors.White if i == 1 else Colors.Black)
-
-        for i in (0, 7):
-            self.board[i][0].piece_type = Rook(Colors.White if i == 0 else Colors.Black)
-            self.board[i][7].piece_type = Rook(Colors.White if i == 0 else Colors.Black)
-            self.board[i][1].piece_type = Knight(Colors.White if i == 0 else Colors.Black)
-            self.board[i][6].piece_type = Knight(Colors.White if i == 0 else Colors.Black)
-            self.board[i][2].piece_type = Bishop(Colors.White if i == 0 else Colors.Black)
-            self.board[i][5].piece_type = Bishop(Colors.White if i == 0 else Colors.Black)
-            self.board[i][4].piece_type = King(Colors.White if i == 0 else Colors.Black)
-            self.board[i][3].piece_type = Queen(Colors.White if i == 0 else Colors.Black)
-        for i in range(2, 6):
-            for j in range(8):
-                self.board[i][j].piece_type = Free_space()
 
     def print(self):
         """Prints the board in current state"""
