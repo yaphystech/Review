@@ -167,7 +167,8 @@ class Chess_board(object):
         self.current_shah_checker()
 
     def trace_check(self, c):  # c = [x1, y1, x2, y2]
-        """Takes a list of coordinates and checks for some wrong moves"""
+        """Takes a list of coordinates and checks for the presence of figures in the course of the following figure. 
+        It gives an error if stumbles upon something along the path"""
         deltaX = c[2] - c[0]
         deltaY = c[3] - c[1]
         if deltaX == 0 and deltaY == 0:
@@ -220,7 +221,7 @@ class Chess_board(object):
         self.change_move()
 
     def pawn_checker(self, c):
-        """Moves the Pawn"""
+        """Works with the board and fully checks the possibility of making the pawn move"""
         deltaX = c[2] - c[0]
         deltaY = c[3] - c[1]
         if abs(deltaX) > 1 or abs(deltaY) > 2:
