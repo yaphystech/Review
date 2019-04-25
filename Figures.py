@@ -6,7 +6,7 @@ class Piece(object):
 
     def __init__(self, color):
         """Takes a color(int) and creates black or white figure(type of cell) in dependence of color"""
-        available_ways = {}
+        self.available_ways = {}
         self.color = color
         self.picture = None
         self.was_moved = False
@@ -49,6 +49,7 @@ class Pawn(Piece):
     __name__ = 'Pawn'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♙' if color == Colors.White else '♙'
 
@@ -68,6 +69,7 @@ class Knight(Piece):
     __name__ = 'Knight'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♘' if color == Colors.White else '♞'
 
@@ -85,6 +87,7 @@ class Rook(Piece):
     __name__ = 'Rook'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♖' if color == Colors.White else '♜'
 
@@ -102,6 +105,7 @@ class Bishop(Piece):
     __name__ = 'Bishop'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♗' if color == Colors.White else '♝'
 
@@ -118,6 +122,7 @@ class King(Piece):
     __name__ = 'King'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♔' if color == Colors.White else '♚'
 
@@ -134,6 +139,7 @@ class Queen(Piece):
     __name__ = 'Queen'
 
     def __init__(self, color):
+        self.available_ways = {}
         super().__init__(color)
         self.picture = '♕' if color == Colors.White else '♛'
 
