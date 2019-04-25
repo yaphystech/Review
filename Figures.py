@@ -3,10 +3,10 @@ from Colors import Colors
 
 class Piece(object):
     __name__ = 'Piece'
-    available_ways = {}
 
     def __init__(self, color):
         """Takes a color(int) and creates black or white figure(type of cell) in dependence of color"""
+        available_ways = {}
         self.color = color
         self.picture = None
         self.was_moved = False
@@ -47,7 +47,6 @@ class Free_space(Piece):
 
 class Pawn(Piece):
     __name__ = 'Pawn'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
@@ -67,7 +66,6 @@ class Pawn(Piece):
 
 class Knight(Piece):
     __name__ = 'Knight'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
@@ -85,7 +83,6 @@ class Knight(Piece):
 
 class Rook(Piece):
     __name__ = 'Rook'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
@@ -103,7 +100,6 @@ class Rook(Piece):
 
 class Bishop(Piece):
     __name__ = 'Bishop'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
@@ -120,7 +116,6 @@ class Bishop(Piece):
 
 class King(Piece):
     __name__ = 'King'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
@@ -137,7 +132,6 @@ class King(Piece):
 
 class Queen(Piece):
     __name__ = 'Queen'
-    available_ways = {}
 
     def __init__(self, color):
         super().__init__(color)
